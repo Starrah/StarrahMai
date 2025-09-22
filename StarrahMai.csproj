@@ -250,6 +250,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Compile Include="AquaMai\GuiSizes.cs" />
+		<Compile Include="AquaMai\KeyCodeOrName.cs" />
+		<Compile Include="AquaMai\KeyListener.cs" />
 		<Compile Include="Core.cs" />
 	</ItemGroup>
 	
