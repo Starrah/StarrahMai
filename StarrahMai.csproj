@@ -254,9 +254,10 @@
 		<Compile Include="AquaMai\KeyCodeOrName.cs" />
 		<Compile Include="AquaMai\KeyListener.cs" />
 		<Compile Include="Core.cs" />
+		<Compile Include="Toast.cs" />
 	</ItemGroup>
 	
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="COPY &quot;$(TargetPath)&quot; &quot;C:\Users\panda2134\Desktop\SDEZ\Package\Mods&quot;" />
+		<Exec Command="COPY &quot;$(TargetPath)&quot; &quot;S:\SDEZ160\Package\Mods&quot;" />
 	</Target>
 </Project>

@@ -2,6 +2,10 @@
 > 个人自用Sinmai Mod，作为AquaMai等的的补充。
 
 ### 当前功能列表
+- Autoplay相关：
+  - Service键短按：完全开启或完全关闭Autoplay（而不是按一次切换一个模式）
+  - Service键长按：开启Autoplay后马上关闭（用于手动强制触发DontRuinMyAccount）
+  - 以上两个功能都是在歌曲开始前的歌名显示页面起就可以使用了，而无需像AquaMai一样必须等到进谱面。
 
 ### 编译和使用
 1. Libs里放入AMDaemon.NET.dll、Assembly-CSharp.dll、Assembly-CSharp-firstpass.dll。
