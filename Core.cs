@@ -1,6 +1,6 @@
 ﻿using MelonLoader;
 
-[assembly: MelonInfo(typeof(DontRuinMyAccount.Core), "DontRuinMyAccount", "1.0.0", "panda2134", null)]
+[assembly: MelonInfo(typeof(StarrahMai.Core), "StarrahMai", "1.0.0", "Starrah", "https://github.com/Starrah/StarrahMai")]
 [assembly: MelonGame("sega-interactive", "Sinmai")]
 
 namespace DontRuinMyAccount
