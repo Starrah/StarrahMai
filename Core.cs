@@ -1,14 +1,15 @@
 ﻿using AquaMai.Config.Types;
-using AquaMai.Core.Helpers;
 using HarmonyLib;
 using Manager;
 using MelonLoader;
 using MelonLoader.Assertions;
 using Monitor;
 using Process;
+using StarrahMai.AquaMai;
 
 [assembly: MelonInfo(typeof(StarrahMai.Core), "StarrahMai", "1.0.0", "Starrah", "https://github.com/Starrah/StarrahMai")]
 [assembly: MelonGame("sega-interactive", "Sinmai")]
+[assembly: MelonAdditionalDependencies("AquaMai")] // 确保在AquaMai之后加载（AI说的，不确定有效）
 
 namespace StarrahMai;
 
