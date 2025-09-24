@@ -20,7 +20,7 @@
 - 建议直接在源码中开启/关闭相应代码来进行配置。个人自用，懒得写文本配置模块了。
 
 ### 验证Mod已经正确运行
-- 游戏启动后，MelonLoader的Log窗口中会有Log：`[StarrahMai] Initialized.`
+- 游戏启动后，MelonLoader的Log窗口中会有Log：`[StarrahMai] 已加载`
 
 ### PS：为什么会有这个Mod，而不是全都PR进AquaMai
 - 这个Mod里放的大多是一些，我很喜欢，但是想了想又觉得不是人人都需要/大部分人都可能没那么感兴趣的东西，这种东西拿去AquaMai提PR可能也没那么合适。

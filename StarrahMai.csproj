@@ -253,7 +253,9 @@
 		<Compile Include="AquaMai\GuiSizes.cs" />
 		<Compile Include="AquaMai\KeyCodeOrName.cs" />
 		<Compile Include="AquaMai\KeyListener.cs" />
+		<Compile Include="Autoplay.cs" />
 		<Compile Include="Core.cs" />
+		<Compile Include="MaimollerCoin.cs" />
 		<Compile Include="Toast.cs" />
 	</ItemGroup>
 	

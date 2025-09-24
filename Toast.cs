@@ -41,7 +41,6 @@ public class Toast : MonoBehaviour
 
     public void OnGUI()
     {
-        Melon<Core>.Logger.Msg("[Toast] {0} {1} {2} {3} {4}", message, x, y, width, height);
         var rect = new Rect(x, y, width, height);
         var labelStyle = GUI.skin.GetStyle("label");
         labelStyle.fontSize = (int)(GuiSizes.FontSize * 1.2);
