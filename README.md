@@ -5,7 +5,11 @@
 - Autoplay相关：
   - Service键短按：完全开启或完全关闭Autoplay（而不是按一次切换一个模式）
   - Service键长按：开启Autoplay后马上关闭（用于手动强制触发DontRuinMyAccount）
-  - 以上两个功能都是在歌曲开始前的歌名显示页面起就可以使用了，而无需像AquaMai一样必须等到进谱面。
+  - 以上两个功能都是在歌曲开始前的封面等信息显示的页面起就可以使用了，而无需像AquaMai一样必须等到进谱面。
+- Maimoller的Coin键可以用于AquaMai的功能中了。
+  - 适用范围：所有能够指定为Test/Service键的地方，比如练习模式/快速重试切歌等等。
+  - 方法：在AquaMai里将相应功能的按键指定为F3，即可实现用Maimoller的Coin键（FN3）控制该功能。
+    - 键盘上原有的F3键会失效，不能在游戏中使用。
 
 ### 编译和使用
 1. Libs里放入AMDaemon.NET.dll、Assembly-CSharp.dll、Assembly-CSharp-firstpass.dll。
