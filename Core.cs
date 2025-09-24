@@ -19,7 +19,7 @@ public class Core : MelonMod
     public override void OnInitializeMelon()
     {
         loadModule(typeof(MaimollerCoin));
-        // loadModule(typeof(Autoplay));
+        loadModule(typeof(Autoplay));
         MelonLogger.Msg("已加载");
     }
 
