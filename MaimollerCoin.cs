@@ -27,8 +27,10 @@ public static class MaimollerCoin
     {
         // 由于两个KeyCodeOrName的底层Type不同，直接把CoinKey传进Dict会导致崩溃。
         // 尝试了各种办法，最后发现最简单也最靠谱的是使用反射找到get/set_Item方法然后手动Invoke，这时就可以传数值代替枚举对象了。
-        int value = (int)_keyPressDict_getItem.Invoke(____keyPressFrames, [(int)CoinKey]);
-        _keyPressDict_setItem.Invoke(____keyPressFramesPrev, [(int)CoinKey, value]);
+        
+        // 在原本的CheckLongPush函数中，____keyPressFramesPrev[F3]已经被设为了上一帧____keyPressFrames[F3]的值，而____keyPressFrames[F3]会被按照物理键盘F3键的状态重设
+        // 因此我们要选取的参考value应该是____keyPressFramesPrev[F3]，而非____keyPressFrames[F3]。
+        int value = (int)_keyPressDict_getItem.Invoke(____keyPressFramesPrev, [(int)CoinKey]);
         if (_IOIO[KeyCode.CapsLock])
         {
 # if DEBUG
