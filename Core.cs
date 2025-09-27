@@ -1,7 +1,7 @@
 ﻿using AquaMai.Config.Types;
 using MelonLoader;
 
-[assembly: MelonInfo(typeof(StarrahMai.Core), "StarrahMai", "0.1.0", "Starrah", "https://github.com/Starrah/StarrahMai")]
+[assembly: MelonInfo(typeof(StarrahMai.Core), "StarrahMai", "0.1.1", "Starrah", "https://github.com/Starrah/StarrahMai")]
 [assembly: MelonGame("sega-interactive", "Sinmai")]
 [assembly: MelonAdditionalDependencies("AquaMai")] // 确保在AquaMai之后加载（AI说的，不确定有效）
 [assembly: MelonOptionalDependencies("ADXHIDIOMod")]
