@@ -10,6 +10,8 @@
   - 适用范围：所有能够指定为Test/Service键的地方，比如练习模式/快速重试切歌等等。
   - 方法：在AquaMai里将相应功能的按键指定为F3，即可实现用Maimoller的Coin键（FN3）控制该功能。
     - 键盘上原有的F3键会失效，不能在游戏中使用。
+- LinuxPatch：纯个人自用，用于使在游戏在Linux+Wine环境下能够正常运行与游玩的一些功能（除了我应该不会有什么人这么闲到在Wine下面折腾HDD吧......）
+  - 不过你**不必刻意关闭此模块**，这个模块内置了检查当前是否为Wine环境、如果不是的话自动不生效，因此在一般Windows环境下也不会有问题。
 
 ### 编译和使用
 1. Libs里放入AMDaemon.NET.dll、Assembly-CSharp.dll、Assembly-CSharp-firstpass.dll。

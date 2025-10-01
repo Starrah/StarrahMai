@@ -20,6 +20,7 @@ public class Core : MelonMod
     {
         loadModule(typeof(MaimollerCoin));
         loadModule(typeof(Autoplay));
+        loadModule(typeof(LinuxPatch));
         MelonLogger.Msg("已加载");
     }
 
