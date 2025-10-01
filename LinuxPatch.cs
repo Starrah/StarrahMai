@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Reflection;
+using System.Runtime.InteropServices;
 using HarmonyLib;
 using MelonLoader;
 
@@ -25,7 +26,9 @@ public static class LinuxPatch
 #endif
             return !string.IsNullOrEmpty(version);
         }
+#pragma warning disable CS0168 // 声明了变量，但从未使用过
         catch (Exception e)
+#pragma warning restore CS0168 // 声明了变量，但从未使用过
         {
 #if DEBUG
             MelonLogger.Msg($"[LinuxPatch] wine_get_version call failed: {e}");
@@ -37,13 +40,8 @@ public static class LinuxPatch
     [HarmonyPrepare]
     public static bool Prepare()
     {
-        if (!IsRunningOnWine())
-        {
-            MelonLogger.Msg($"[LinuxPatch] 未在Wine环境下运行，LinuxPatch的功能不会生效。");
-            return false;
-        }
-
-        MelonLogger.Msg($"[LinuxPatch] 检测到Wine环境，相关功能将生效。");
+        if (!IsRunningOnWine()) return false;
+        MelonLogger.Msg($"启用功能：{MethodBase.GetCurrentMethod().DeclaringType.Name}");
 
         // 需要在Prepare阶段一次性运行的功能
         DisableAquamaiSoundExclusive();

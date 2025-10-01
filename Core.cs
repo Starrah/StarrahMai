@@ -1,7 +1,7 @@
 ﻿using AquaMai.Config.Types;
 using MelonLoader;
 
-[assembly: MelonInfo(typeof(StarrahMai.Core), "StarrahMai", "0.1.1", "Starrah", "https://github.com/Starrah/StarrahMai")]
+[assembly: MelonInfo(typeof(StarrahMai.Core), "StarrahMai", "0.1.2", "Starrah", "https://github.com/Starrah/StarrahMai")]
 [assembly: MelonGame("sega-interactive", "Sinmai")]
 [assembly: MelonAdditionalDependencies("AquaMai")] // 确保在AquaMai之后加载（AI说的，不确定有效）
 [assembly: MelonOptionalDependencies("ADXHIDIOMod")]
@@ -20,13 +20,13 @@ public class Core : MelonMod
     {
         loadModule(typeof(MaimollerCoin));
         loadModule(typeof(Autoplay));
-        loadModule(typeof(LinuxPatch));
+        loadModule(typeof(LinuxPatch), false);
         MelonLogger.Msg("已加载");
     }
 
-    private void loadModule(Type type)
+    private void loadModule(Type type, bool loadedMsg = true)
     {
         HarmonyInstance.PatchAll(type);
-        MelonLogger.Msg($"启用功能：{type.Name}");
+        if (loadedMsg) MelonLogger.Msg($"启用功能：{type.Name}");
     }
 }
