@@ -1,4 +1,5 @@
-﻿using AquaMai.Core.Helpers;
+﻿using AquaMai.Config.Types;
+using AquaMai.Core.Helpers;
 using HarmonyLib;
 using Manager;
 using MelonLoader;
@@ -10,6 +11,9 @@ namespace StarrahMai;
 
 public static class Autoplay
 {
+    public static readonly (KeyCodeOrName, bool) autoplayKey = (KeyCodeOrName.Service, false); // 一键开关Autoplay
+    public static readonly (KeyCodeOrName, bool) dontRuinMyAccountTriggerKey = (KeyCodeOrName.Service, true); // 强制防毁号：开启Autoplay后马上关闭（用于手动强制触发DontRuinMyAccount）
+    
     public static bool deferAutoplay = false; // 如果TrackStartProcess期间发动了autoplay，则此项为true，表示应当在GameProcess开始后立即设置autoplay。
     private static bool dontRuinMyAccountTriggered = false;
 
@@ -37,12 +41,12 @@ public static class Autoplay
     [HarmonyPostfix]
     public static void GameProcessOnUpdate()
     {
-        if (KeyListener.GetKeyDownOrLongPress(Core.autoplayKey.Item1, Core.autoplayKey.Item2) || (deferAutoplay && !dontRuinMyAccountTriggered))
+        if (KeyListener.GetKeyDownOrLongPress(autoplayKey.Item1, autoplayKey.Item2) || (deferAutoplay && !dontRuinMyAccountTriggered))
         {
             var activate = ToggleAutoplay();
             MelonLogger.Msg("[Autoplay] Autoplay已{0}！", activate ? "开启" : "关闭");
         }
-        else if (KeyListener.GetKeyDownOrLongPress(Core.dontRuinMyAccountTriggerKey.Item1, Core.dontRuinMyAccountTriggerKey.Item2) ||
+        else if (KeyListener.GetKeyDownOrLongPress(dontRuinMyAccountTriggerKey.Item1, dontRuinMyAccountTriggerKey.Item2) ||
                  (deferAutoplay && dontRuinMyAccountTriggered))
         {
             TriggerDontRuinMyAccount();
@@ -61,7 +65,7 @@ public static class Autoplay
     public static void TrackStartProcessOnUpdate(TrackStartMonitor[] ____monitors)
     {
         string message = "";
-        if (KeyListener.GetKeyDownOrLongPress(Core.autoplayKey.Item1, Core.autoplayKey.Item2))
+        if (KeyListener.GetKeyDownOrLongPress(autoplayKey.Item1, autoplayKey.Item2))
         {
             deferAutoplay = !deferAutoplay;
             if (deferAutoplay)
@@ -73,7 +77,7 @@ public static class Autoplay
                 message = "又按了一次，取消Autoplay的开启。";
             }
         }
-        else if (KeyListener.GetKeyDownOrLongPress(Core.dontRuinMyAccountTriggerKey.Item1, Core.dontRuinMyAccountTriggerKey.Item2))
+        else if (KeyListener.GetKeyDownOrLongPress(dontRuinMyAccountTriggerKey.Item1, dontRuinMyAccountTriggerKey.Item2))
         {
             if (!dontRuinMyAccountTriggered)
             {
