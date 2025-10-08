@@ -1,5 +1,4 @@
-﻿using MelonLoader;
-using StarrahMai.AquaMai;
+﻿using AquaMai.Core.Helpers;
 using UnityEngine;
 
 namespace StarrahMai;

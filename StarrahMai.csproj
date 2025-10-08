@@ -24,6 +24,15 @@
 		<Reference Include="Assembly-CSharp">
 			<HintPath>Libs\Assembly-CSharp.dll</HintPath>
 		</Reference>
+        <Reference Include="AquaMai.Mods">
+            <HintPath>Libs\AquaMai\AquaMai.Mods.dll</HintPath>
+        </Reference>
+        <Reference Include="AquaMai.Core">
+            <HintPath>Libs\AquaMai\AquaMai.Core.dll</HintPath>
+        </Reference>
+        <Reference Include="AquaMai.Config">
+            <HintPath>Libs\AquaMai\AquaMai.Config.dll</HintPath>
+        </Reference>
 		<Reference Include="I18N.CJK">
 			<HintPath>Libs\Managed\I18N.CJK.dll</HintPath>
 		</Reference>
@@ -250,9 +259,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Compile Include="AquaMai\GuiSizes.cs" />
-		<Compile Include="AquaMai\KeyCodeOrName.cs" />
-		<Compile Include="AquaMai\KeyListener.cs" />
 		<Compile Include="Autoplay.cs" />
 		<Compile Include="Core.cs" />
 		<Compile Include="LinuxPatch.cs" />

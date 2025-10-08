@@ -51,6 +51,7 @@ public static class LinuxPatch
 
     public static void DisableAquamaiSoundExclusive()
     {
-        Traverse.CreateWithType("AquaMai.Mods.GameSystem.Sound").Field("enableExclusive").SetValue(false);
+        // 目标field是私有的，因此需要通过反射修改值
+        Traverse.Create(typeof(AquaMai.Mods.GameSystem.Sound)).Field("enableExclusive").SetValue(false);
     }
 }

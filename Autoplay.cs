@@ -1,10 +1,10 @@
-﻿using HarmonyLib;
+﻿using AquaMai.Core.Helpers;
+using HarmonyLib;
 using Manager;
 using MelonLoader;
 using MelonLoader.Assertions;
 using Monitor;
 using Process;
-using StarrahMai.AquaMai;
 
 namespace StarrahMai;
 
