@@ -1,6 +1,6 @@
 ﻿using MelonLoader;
 
-[assembly: MelonInfo(typeof(StarrahMai.Core), "StarrahMai", "0.1.3", "Starrah", "https://github.com/Starrah/StarrahMai")]
+[assembly: MelonInfo(typeof(StarrahMai.Core), "StarrahMai", "0.2.0", "Starrah", "https://github.com/Starrah/StarrahMai")]
 [assembly: MelonGame("sega-interactive", "Sinmai")]
 [assembly: MelonAdditionalDependencies("AquaMai")] // 确保在AquaMai之后加载（AI说的，不确定有效）
 [assembly: MelonOptionalDependencies(
@@ -18,6 +18,7 @@ public class Core : MelonMod
         loadModule(typeof(MaimollerCoin));
         loadModule(typeof(Autoplay));
         loadModule(typeof(LinuxPatch), false);
+        loadModule(typeof(OBSSave));
         MelonLogger.Msg("已加载");
     }
 

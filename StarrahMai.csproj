@@ -263,6 +263,7 @@
 		<Compile Include="Core.cs" />
 		<Compile Include="LinuxPatch.cs" />
 		<Compile Include="MaimollerCoin.cs" />
+		<Compile Include="OBSSave.cs" />
 		<Compile Include="Toast.cs" />
 	</ItemGroup>
 	

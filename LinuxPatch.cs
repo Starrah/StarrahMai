@@ -38,8 +38,9 @@ public static class LinuxPatch
     }
 
     [HarmonyPrepare]
-    public static bool Prepare()
+    public static bool Prepare(MethodBase original)
     {
+        if (original != null) return true; // 只对类prepare进行处理，如果是具体patch method的prepare，不做处理
         if (!IsRunningOnWine()) return false;
         MelonLogger.Msg($"启用功能：{MethodBase.GetCurrentMethod().DeclaringType.Name}");
 
