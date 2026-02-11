@@ -6,10 +6,15 @@
   - Service键短按：完全开启或完全关闭Autoplay（而不是按一次切换一个模式）
   - Service键长按：开启Autoplay后马上关闭（用于手动强制触发DontRuinMyAccount）
   - 以上两个功能都是在歌曲开始前的封面等信息显示的页面起就可以使用了，而无需像AquaMai一样必须等到进谱面。
-- MaimollerCoin：Maimoller的Coin键可以用于AquaMai的功能中了。
-  - 适用范围：所有能够指定为Test/Service键的地方，比如练习模式/快速重试切歌等等。
-  - 方法：在AquaMai里将相应功能的按键指定为F3，即可实现用Maimoller的Coin键（FN3）控制该功能。
-    - 键盘上原有的F3键会失效，不能在游戏中使用。
+- MaimollerCoin：功能现已升级，此模块现在同时支持以下两种功能，可以单独开启，也可分别开启：
+  1. 将Maimoller的Coin键映射为AquaMai中的某一个键（如F1~F12）。**默认开启**，按键为F3。
+     - **典型应用场景：在AquaMai中把练习模式/快速重试/一键切歌等的快捷键设为F3，即可实现用机台上Coin键控制这些功能。**
+     - 这个映射出来的键只能在AquaMai（或与AquaMai兼容、使用AquaMai的按键状态接口的其他Mod，如本Mod的OBSSave功能）中，为相关功能绑定了所映射的按键时生效。
+     - 注：开启本功能后，原本在键盘上的那个按键会在AquaMai中失效。
+  2. 将Maimoller的Coin键，通过操作系统的键盘事件，映射为一个提交给操作系统的按键。**默认不开启；如果需要设为Enter键，请修改MaimollerCoin.cs中的RealKey变量后自行编译，详见该类上的注释**。
+     - **典型应用场景：RealKey改为13，模拟Enter键，以触发segatools提供的模拟aime刷卡功能。**
+     - 这种方法下，映射出来的键键会被真实的发送给操作系统，因此可以被所有的程序捕捉到，而不仅限于AquaMai兼容Mod。
+     - RealKey的有效取值可参考[标准键盘码值表](https://blog.csdn.net/weixin_40331125/article/details/80684360)
 - LinuxPatch：纯个人自用，用于使在游戏在Linux+Wine环境下能够正常运行与游玩的一些功能（除了我应该不会有什么人这么闲到在Wine下面折腾HDD吧......）
   - 不过你**不必刻意关闭此模块**，这个模块内置了检查当前是否为Wine环境、如果不是的话自动不生效，因此在一般Windows环境下也不会有问题。
 - OBSSave：调用OBS的API，实现一键或每首歌自动，保存OBS的回放缓存。
