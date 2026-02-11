@@ -15,7 +15,7 @@ public class Core : MelonMod
     public override void OnInitializeMelon()
     {
         /* 如果想要关闭某个功能，注释掉相应的加载语句即可 */
-        loadModule(typeof(MaimollerCoin));
+        loadModule(typeof(MaimollerCoin), false);
         loadModule(typeof(Autoplay));
         loadModule(typeof(LinuxPatch), false);
         loadModule(typeof(OBSSave));

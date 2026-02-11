@@ -1,4 +1,5 @@
-﻿using AquaMai.Config.Types;
+﻿using System.Reflection;
+using AquaMai.Config.Types;
 using AquaMai.Core.Helpers;
 using HarmonyLib;
 using MelonLoader;
@@ -10,10 +11,24 @@ public static class MaimollerCoin
 {
     public static readonly KeyCodeOrName CoinKey = KeyCodeOrName.F3; // 把Coin键映射到哪个键
 
-    // 如果没装ADXHIDIO Mod。则下面这行初始化（static构造函数中）会抛异常，从而整个类不会被加载，钩子也不会打上。不会报错崩溃。没啥问题，就先这样吧。
-    private static Dictionary<KeyCode, bool> _IOIO =
-        (Dictionary<KeyCode, bool>)AccessTools.Field("ADXHIDIO.ADXController.IOIO:state").GetValue(null);
+    private static Dictionary<KeyCode, bool> _IOIO; // 在Prepare钩子中设置
 
+    [HarmonyPrepare]
+    public static bool Prepare(MethodBase original)
+    {
+        if (original != null) return true; // 只对类prepare进行处理，如果是具体patch method的prepare，不做处理
+        try
+        {
+            _IOIO = (Dictionary<KeyCode, bool>)AccessTools.Field("ADXHIDIO.ADXController.IOIO:state").GetValue(null);
+        } catch
+        {
+            MelonLogger.Error($"[MaimollerCoin] ADXHIDIOMod.dll未安装，无法启用MaimollerCoin功能。（目前仅支持mml原厂IO Mod，暂时还不支持AquaMai的mml IO）");
+            return false;
+        }
+        MelonLogger.Msg($"启用功能：{MethodBase.GetCurrentMethod().DeclaringType.Name}");
+        return true;
+    }
+    
     [HarmonyPostfix]
     [HarmonyPatch(typeof(KeyListener), "CheckLongPush")]
     public static void CheckCoinKey(Dictionary<KeyCodeOrName, int> ____keyPressFrames,
