@@ -18,8 +18,10 @@ namespace StarrahMai;
 
 public static class OBSSave
 {
-    // 一键保存录像回放的按钮，F3是与MaimollerCoin联动、对应机台上的FN3键。
-    public static readonly (KeyCodeOrName, bool) Key = (KeyCodeOrName.F3, false);
+    // 一键保存录像回放的按钮。
+    // 如果配合ADXHIDIOMod和本Mod的MaimollerCoin功能使用，则应设为F3。
+    // 如果配合AquaMai的Maimoller IO使用，则应设为AquaMai提供的控制器“自定义功能键”。
+    public static readonly (KeyCodeOrName, bool) Key = (KeyCodeOrName.CustomFn1, false);
 
     private static OBSWebsocket obs = new();
 

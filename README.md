@@ -6,7 +6,10 @@
   - Service键短按：完全开启或完全关闭Autoplay（而不是按一次切换一个模式）
   - Service键长按：开启Autoplay后马上关闭（用于手动强制触发DontRuinMyAccount）
   - 以上两个功能都是在歌曲开始前的封面等信息显示的页面起就可以使用了，而无需像AquaMai一样必须等到进谱面。
-- MaimollerCoin：功能现已升级，此模块现在同时支持以下两种功能，可以单独开启，也可分别开启：
+- MaimollerCoin：**仅限与官方ADXHIDIOMod搭配使用**，将Maimoller的Coin键映射为AquaMai中的某个键或系统上的某个键。
+  - 注意：仅限与官方ADXHIDIOMod搭配使用。如果你使用的是AquaMai的Maimoller IO，该功能现已被合并入AquaMai主线，请直接在AquaMai中修改配置启用相关选项即可。
+    - 具体而言，对下方功能1，是在`[GameSystem.MaimollerIO]`中将`Button4`设为`CustomFn1`
+    - 对下方功能2，则是打开`[UX.CustomFnToKeyboard]`，并将`CustomFnX`设为你想要的键盘按键。
   1. 将Maimoller的Coin键映射为AquaMai中的某一个键（如F1~F12）。**默认开启**，按键为F3。
      - **典型应用场景：在AquaMai中把练习模式/快速重试/一键切歌等的快捷键设为F3，即可实现用机台上Coin键控制这些功能。**
      - 这个映射出来的键只能在AquaMai（或与AquaMai兼容、使用AquaMai的按键状态接口的其他Mod，如本Mod的OBSSave功能）中，为相关功能绑定了所映射的按键时生效。

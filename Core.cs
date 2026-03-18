@@ -1,6 +1,6 @@
 ﻿using MelonLoader;
 
-[assembly: MelonInfo(typeof(StarrahMai.Core), "StarrahMai", "0.3.0", "Starrah", "https://github.com/Starrah/StarrahMai")]
+[assembly: MelonInfo(typeof(StarrahMai.Core), "StarrahMai", "0.3.1", "Starrah", "https://github.com/Starrah/StarrahMai")]
 [assembly: MelonGame("sega-interactive", "Sinmai")]
 [assembly: MelonAdditionalDependencies("AquaMai")] // 确保在AquaMai之后加载（AI说的，不确定有效）
 [assembly: MelonOptionalDependencies(
@@ -15,7 +15,7 @@ public class Core : MelonMod
     public override void OnInitializeMelon()
     {
         /* 如果想要关闭某个功能，注释掉相应的加载语句即可 */
-        loadModule(typeof(MaimollerCoin), false);
+        // loadModule(typeof(MaimollerCoin), false);
         loadModule(typeof(Autoplay));
         loadModule(typeof(LinuxPatch), false);
         loadModule(typeof(OBSSave));
