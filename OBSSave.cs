@@ -80,6 +80,15 @@ public static class OBSSave
         {
             // 关闭操作即使发生异常也无所谓，直接忽略
         }
+        
+        // 检查确认回放缓存已关闭完成，避免还在关闭中状态时就调用开启接口、导致失败
+        const int MAX_RETRY = 10; // 每隔300ms重复检查，最多重试10次
+        for (int _ = 0; _ < MAX_RETRY; _++)
+        {
+            var res = await obs.SendRequest("GetReplayBufferStatus");
+            if (res["outputActive"]) await Task.Delay(300); // 返回开启中状态、说明还未完成关闭，继续等待
+            else break; // 已完成关闭
+        }
 
         try
         {
