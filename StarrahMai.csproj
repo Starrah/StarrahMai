@@ -261,6 +261,7 @@
 	<ItemGroup>
 		<Compile Include="Autoplay.cs" />
 		<Compile Include="Core.cs" />
+		<Compile Include="GameRecords.cs" />
 		<Compile Include="LinuxPatch.cs" />
 		<Compile Include="MaimollerCoin.cs" />
 		<Compile Include="OBSSave.cs" />

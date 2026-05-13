@@ -33,6 +33,13 @@
       - 默认按键为F3，以便和MaimollerCoin联动，使用机台上的按键控制。
     - 此外，`StarrahMai.OBSSave.config.json`配置文件中有一个字段`autoSave`。
       - 如果设为true，则在每首歌之后、退出成绩显示页面时，会自动触发一次保存。（也就是连同打歌的过程和成绩页面都保存下来）
+- GameRecords：记录游玩的日志，包括玩家选了什么歌、获得的成绩、是否跳关之类。可用于留存游玩记录，或音游窝基于此进行数据统计等。
+  - 原始日志会被保存到游戏目录下的`GameRecords.txt`中。
+  - 每个事件一行，行内字段间用Tab（`\t`）分隔。具体格式和含义，详见`GameRecords.cs`中的注释。
+  - **建议使用仓库内附带的`ReadGameRecords.py`**，对日志进行聚合分析。
+    - 该脚本可对 `GameRecords.txt` 按歌曲 id 与难度聚合，可输出选歌次数、正常打完次数、平均达成率、FC 率、跳关次数、重开次数等
+    - 脚本使用方法：将`GameRecords.txt`的路径作为参数传入。另外可以添加用于筛选的可选参数：`--from`、`--to`（按时间范围筛选）、`--minId`、`--maxId`（按歌曲 id 最后四位筛选）。
+    - 用法示例：`python ReadGameRecords.py "C:\SDEZ\Package\GameRecords.txt" --from 2026-01-01 --minId 5000`（统计26年以来的所有id大于等于5000的自制谱的成绩）
 
 ### 编译和使用
 1. Libs里放入`AMDaemon.NET.dll`、`Assembly-CSharp.dll`、`Assembly-CSharp-firstpass.dll`。
