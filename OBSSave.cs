@@ -61,7 +61,7 @@ public static class OBSSave
             }
             catch (Exception e)
             {
-                MelonLogger.Error($"[OBSSave] 连接失败！ {e}");
+                MelonLogger.Error($"[OBSSave] 连接失败！ {e.Message}");
                 MelonLogger.Warning($"[OBSSave] 请确保已在配置文件中配置了正确的URL和密码，配置文件位于：{configFile}");
             }
         });
@@ -97,7 +97,7 @@ public static class OBSSave
         }
         catch (Exception e)
         {
-            MelonLogger.Error($"[OBSSave] 重置OBS回放缓存失败！{e}");
+            MelonLogger.Error($"[OBSSave] 重置OBS回放缓存失败！{e.Message}");
         }
     }
 
@@ -111,7 +111,7 @@ public static class OBSSave
         }
         catch (Exception e)
         {
-            MelonLogger.Error($"[OBSSave] 录像保存失败！ {e}`");
+            MelonLogger.Error($"[OBSSave] 录像保存失败！ {e.Message}`");
             if (monitorForDisplayToast != null) Toast.ShowToast(monitorForDisplayToast, $"录像保存失败！{e.Message}");
         }
     }
@@ -304,8 +304,7 @@ class OBSWebsocket
         catch (Exception e)
         {
             if (!allowRetry) throw;
-            MelonLogger.Warning(e);
-            MelonLogger.Warning("[OBSSave] 连接断开，正在尝试重连...");
+            MelonLogger.Warning($"[OBSSave] 连接断开({e.Message})，正在尝试重连...");
             await Reconnect();
             return await SendRequest(name, data, false);
         }
@@ -320,8 +319,7 @@ class OBSWebsocket
             catch (Exception e)
             {
                 if (!allowRetry) throw;
-                MelonLogger.Warning(e);
-                MelonLogger.Warning("[OBSSave] 连接断开，正在尝试重连");
+                MelonLogger.Warning($"[OBSSave] 连接断开({e.Message})，正在尝试重连...");
                 await Reconnect();
                 return await SendRequest(name, data, false);
             }
